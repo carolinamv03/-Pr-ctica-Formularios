@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Suscripción</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Suscribirse al Boletín</h1>
+  <form id="subsForm">
+    <label>Nombre:<input type="text" id="nombre" required></label><br>
+    <label>Email:<input type="email" id="email" required></label><br>
+    <label class="checkbox-label">
+      <input type="checkbox" id="privacidad" required> Acepto la política de privacidad
+    </label><br>
+    <button type="submit">Acceder</button>
+  </form>
+
+  <script>
+    document.getElementById('subsForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      if (!document.getElementById('privacidad').checked) {
+        alert('Debe aceptar la política de privacidad');
+        return;
+      }
+
+      const data = {
+        nombre: document.getElementById('nombre').value,
+        email: document.getElementById('email').value
+      };
+
+      localStorage.setItem('formData', JSON.stringify(data));
+      window.location.href = 'confirmacion.html';
+    });
+  </script>
+</body>
+</html>
