@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Acceso</h1>
+  <form id="loginForm">
+    <label>Email o NIF:<input type="text" id="usuario" required></label><br>
+    <label>Contraseña:<input type="password" id="clave" required></label><br>
+    <label>Mantener la sesión iniciada:
+      <select>
+        <option>NO</option>
+        <option>SÍ</option>
+      </select>
+    </label><br>
+    <a href="#">Recordar contraseña</a><br>
+    <button type="submit">Acceder</button>
+  </form>
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const user = document.getElementById('usuario').value;
+      const pass = document.getElementById('clave').value;
+      if (user === 'admin@example.com' && pass === '1234') {
+        window.location.href = 'home.html';
+      } else {
+        alert('Credenciales incorrectas');
+      }
+    });
+  </script>
+</body>
+</html>
