@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Inicio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Menú Principal</h1>
+  <ul>
+    <li><a href="form_contacto.html">Formulario de Contacto</a></li>
+    <li><a href="form_registro.html">Formulario de Registro</a></li>
+    <li><a href="form_suscripcion.html">Formulario de Suscripción</a></li>
+  </ul>
+</body>
+</html>
