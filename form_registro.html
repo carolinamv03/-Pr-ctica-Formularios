@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Formulario de Registro</h1>
+  <form id="registroForm">
+    <label>Nombre de Usuario:<input type="text" id="usuario" required></label><br>
+    <label>Email:<input type="email" id="email" required></label><br>
+    <label>Contraseña:<input type="password" id="pass1" required></label><br>
+    <label>Repetir Contraseña:<input type="password" id="pass2" required></label><br>
+    <label>Nombre Completo:<input type="text" id="nombreCompleto" required></label><br>
+
+    <label style="display: flex; align-items: center; gap: 5px;">
+      <input type="checkbox" id="terminos" required> Acepto los términos y condiciones
+    </label><br>
+
+    <label style="display: flex; align-items: center; gap: 5px;">
+      <input type="checkbox" id="noCorreos"> No quiero recibir correos electrónicos
+    </label><br>
+
+    <button type="submit">Acceder</button>
+  </form>
+
+  <script>
+    document.getElementById('registroForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const pass1 = document.getElementById('pass1').value;
+      const pass2 = document.getElementById('pass2').value;
+
+      if (pass1 !== pass2) {
+        alert('Las contraseñas no coinciden');
+        return;
+      }
+
+      if (!document.getElementById('terminos').checked) {
+        alert('Debe aceptar los términos');
+        return;
+      }
+
+      const data = {
+        usuario: document.getElementById('usuario').value,
+        email: document.getElementById('email').value,
+        nombre: document.getElementById('nombreCompleto').value
+      };
+
+      localStorage.setItem('formData', JSON.stringify(data));
+      window.location.href = 'confirmacion.html';
+    });
+  </script>
+</body>
+</html>
