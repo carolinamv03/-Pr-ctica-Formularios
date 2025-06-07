@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirmación</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Datos Ingresados</h1>
+  <div id="resumen"></div>
+  <button onclick="eliminarDatos()">Eliminar mis datos</button>
+
+  <script>
+    const data = JSON.parse(localStorage.getItem('formData'));
+    let html = '';
+    for (const key in data) {
+      html += `<p><strong>${key}:</strong> ${data[key]}</p>`;
+    }
+    document.getElementById('resumen').innerHTML = html;
+
+    function eliminarDatos() {
+      localStorage.removeItem('formData');
+      alert('Tus datos han sido eliminados.');
+      location.reload();
+    }
+  </script>
+</body>
+</html>
