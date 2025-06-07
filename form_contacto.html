@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Contacto</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Contactar con Nosotros</h1>
+  <form id="contactForm">
+    <label>Nombre:<input type="text" id="nombre" required></label><br>
+    <label>Email:<input type="email" id="email" required></label><br>
+    <label>Mensaje:<textarea id="mensaje" required></textarea></label><br><br>
+
+    <label class="checkbox-label">
+      <input type="checkbox" id="privacidad" required> Sí, acepto la política de privacidad
+    </label>
+
+    <button type="submit">Enviar mensaje</button>
+  </form>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!document.getElementById('privacidad').checked) {
+        alert('Debe aceptar la política de privacidad');
+        return;
+      }
+
+      const data = {
+        nombre: document.getElementById('nombre').value,
+        email: document.getElementById('email').value,
+        mensaje: document.getElementById('mensaje').value
+      };
+
+      localStorage.setItem('formData', JSON.stringify(data));
+      window.location.href = 'confirmacion.html';
+    });
+  </script>
+  <p style="font-size: 0.9em; margin-top: 20px; max-width: 600px;">
+  Los datos introducidos en este formulario (nombre, correo electrónico y mensaje) se almacenan localmente en el navegador del usuario mediante <strong>localStorage</strong>, con el único propósito de mostrar un resumen en la página de confirmación. El responsable del tratamiento es el desarrollador del sitio y la legitimación se basa en el consentimiento expreso del usuario, indicado al aceptar la política de privacidad. Estos datos no se envían a ningún servidor ni se comparten con terceros. El usuario puede eliminar la información almacenada cerrando la pestaña o limpiando el almacenamiento local desde su navegador.
+</p>
+
+</body>
+</html>
